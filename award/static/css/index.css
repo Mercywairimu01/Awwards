@@ -1,0 +1,102 @@
+/* hero */
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+#hero{
+ 
+   background: linear-gradient(transparent, rgba(8, 8, 8, 0.446) 95%), url('../images/hero.jpeg');
+  height: 50vh;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+}
+/* portfolio */
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 40px;
+  color: rgb(226, 160, 17);
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 4px solid #000;
+}
+
+.separator:not(:empty)::before {
+  margin-right: .90em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .90em;
+}
+
+/* footer */
+
+
+footer{
+  background: #111;
+  height: auto;
+  color: #fff;
+}
+.footer-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.socials{
+  padding: 20px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.socials li{
+  margin: 0 10px;
+}
+.socials a{
+  text-decoration: none;
+  color: #fff;
+  border: 1.1px solid white;
+  padding: 5px;
+  border-radius: 50%;
+}
+.socials a i{
+  width: 20px;
+  transition: color .4s ease;
+
+}
+.socials a:hover i{
+  color: aqua;
+}
+
+.footer-bottom{
+  background: #000;
+  padding: 10px;
+  text-align: center;
+}
+.footer-bottom p{ 
+  word-spacing: 2px; 
+}
+.footer-bottom p a{
+color:#44bae8;
+text-decoration: none;
+}
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }

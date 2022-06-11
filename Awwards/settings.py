@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap5'
+    'bootstrap5',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+LOGIN_REDIRECT_URL ='index'
+LOGIN_URL ='login'
+LOGOUT_REDIRECT_URL ='login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

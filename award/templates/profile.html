@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+ {{block.super}}
+ <div class="row">
+    <div class="col-5 mx-auto" id="prog">
+     <div class="content-section " style="margin-top: 100px;">
+        <div class="media">
+          <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}" height="100px" width="100px">
+          <div class="prog">
+  
+            <h6 class="text-s"><b>Username :</b> {{ user.username }}</h6>
+            <p class="text-s"><b>Email :</b> {{ user.email }}</p>
+            <h6 class="text-s"><b>Bio :</b> {{ user.profile.bio }}</h6>
+          </div>
+       </div>
+ {% endblock%}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{{block.super}}
+<div id="conta" >
+<img class="rounded-circle" src="{{object.author.profile.profile_picture.url}}" alt="" height="180px" width="180px">
+<p> <b>Username: </b>{{object.author}}</p>
+<p><b>Post Title: </b>{{object.title}}</p>
+<p><b>Post caption: </b>{{object.caption}} <br> <b>Posted At:</b>{{object.date}} </p>
+{% if object.author == user %}
+<a  class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+
+{% endif%}
+</div>
+{% endblock%}

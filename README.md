@@ -1,8 +1,7 @@
 # Awwards
 This is an application that will allow a user to post a project he/she has created and get it reviewed and rated by his/her peers.
-![screenshot]()
-
-Api endpoint: https://mawwards.herokuapp.com/api/
+![screenshot](https://raw.githubusercontent.com/Mercywairimu01/Awwards/main/award/static/images/awward.png)
+[Api endpoint](https://mawwards.herokuapp.com/api/) 
 ---
 ## User Stories  
 User Can :-

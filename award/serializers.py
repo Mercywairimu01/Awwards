@@ -11,12 +11,12 @@ class PostSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = Profile 
-    fields = ['username', 'profile_picture', 'bio', 'location', 'contact']
+    fields = [ 'profile_picture', 'bio', 'location', 'contact']
 
 
 class UserSerializer(serializers.ModelSerializer):
   profile = ProfileSerializer(read_only=True)
-  posts = PostSerializer(read_only=True, many=True)
+  post = PostSerializer(read_only=True, many=True)
 
   class Meta:
     model = User

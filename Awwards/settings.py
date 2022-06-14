@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap5',
     'crispy_forms',
+    'rest_framework',
+    
+   
+   
 ]
 
 MIDDLEWARE = [
@@ -51,7 +55,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+REST_FRAMEWORK = {
+    
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning'
 
+}
 ROOT_URLCONF = 'Awwards.urls'
 
 TEMPLATES = [
@@ -108,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -133,7 +144,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 LOGIN_REDIRECT_URL ='index'
 LOGIN_URL ='login'
-LOGOUT_REDIRECT_URL ='login'
+LOGOUT_REDIRECT_URL ='index'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Default primary key field type

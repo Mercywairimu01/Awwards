@@ -2,19 +2,19 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="row">
-    <div class="col-5 mx-auto" id="prog">
+    <div class="col-4 mx-auto" id="prog">
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4 " style="font-family: 'Pacifico', cursive;font-size:40px;color: rgb(43, 226, 195);">Register</legend>
+                <legend class="border-bottom mb-4  " style="font-family: 'Pacifico', cursive;font-size:40px;color:  rgb(247, 132, 9);text-align: center;">Register</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>
             </div>
         </form>
-        <div class="border-top pt-3">
+        <div class="border-top pt-3 mb-3">
             <small class="text-muted">
                 Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
             </small>

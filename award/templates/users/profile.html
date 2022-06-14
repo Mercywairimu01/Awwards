@@ -1,16 +1,70 @@
-{% extends 'base.html' %} {% block content %}
- {{block.super}}
- <div class="row">
-    <div class="col-5 mx-auto" id="prog">
-     <div class="content-section " style="margin-top: 100px;">
-        <div class="media">
-          <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}" height="100px" width="100px">
-          <div class="prog">
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+{{block.super}}
+<div class="container mb-2 mt-4">
+
+  <h1 class='text-center'>Profile</h1>
+  <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+    <div class="row userdetails ">
+      <div class="col-md-6 person">
+        <img src="{{ current_profile.profile_picture.url }}" alt="{{ current_profile.user.username }}" class="rounded-circle " height="200px" width="200px">
+      </div>
+      <div class='col-md-6 details'>
+        <p>Username: {{ current_profile.user.username }}</p>
+        <p>Bio: {{ current_profile.bio }}</p>
+        <p>Email: {{ current_profile.contact }}</p>
+        <p>Location: {{ current_profile.location }}</p>
+       <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-secondary btn-md plusicon" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <i class="fas fa-plus"></i> <span>Update Info</span>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <h1>Update Info</h1>
+      <form method="post" enctype="multipart/form-data" action="{% url 'profile' %}">
+        {% csrf_token %}
+        {% bootstrap_form u_form %}
+        <br>
+        {% bootstrap_form p_form %}
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+</div>
+<div class="container">
   
-            <h6 class="text-s"><b>Username :</b> {{ user.username }}</h6>
-            <p class="text-s"><b>Email :</b> {{ user.email }}</p>
-            <h6 class="text-s"><b>Bio :</b> {{ user.profile.bio }}</h6>
-            <h6 class="text-s"><b>Location :</b> {{ user.profile.location }}</h6>
-          </div>
-       </div>
- {% endblock%}
+    <div class="row">
+    {% for post in current_post %}
+    <div class='col-4'>
+      <a  href="{% url 'postdetails'  post.id %}"><img src="{{ post.image.url }}" alt="{{ post.title }}" height="300px"  width="405px"></a>
+      <div class="text-left p-2">
+        <p><strong>{{ post.title }}</strong></p>
+      
+        <div class="d-flex justify-content-between align-items-center">
+          <span>View Site <a href="{{ post.livelink }}"><i class="fa-solid fa-eye"></i></a></span>
+          <span><sub> From Kenya</sub></span>
+        </div>
+      </div>
+      <hr>
+    </div>
+    
+    {% empty %}
+    <p class="alert alert-info text-center">Currently No posts</p>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

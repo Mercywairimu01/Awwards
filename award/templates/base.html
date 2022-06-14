@@ -29,7 +29,7 @@
             </a>
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-dark"> <i class="fa-solid fa-house fa-lg"></i></a></li>
+             
              
             </ul>
     
@@ -42,13 +42,17 @@
                 <img src="{{user.profile.profile_picture.url}}" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="{% url 'post' %}">New post</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-              </ul>
-            </div>
+              
+            {% else %}
+            <a href="{% url 'register' %}" style="text-decoration:none ;color: rgb(247, 132, 9);font-weight: bold;">Register</a>
+            <a  href="{% url 'login' %}" style="text-decoration:none ;color: rgb(247, 132, 9);font-weight: bold;margin-left: 10px;">Login</a>
+             </ul>
+          </div>
             {% endif %}
           </div>
         </div>

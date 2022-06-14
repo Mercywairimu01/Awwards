@@ -1,14 +1,61 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 {{block.super}}
-<div id="conta" >
-<img class="rounded-circle" src="{{object.author.profile.profile_picture.url}}" alt="" height="180px" width="180px">
-<p> <b>Username: </b>{{object.author}}</p>
-<p><b>Post Title: </b>{{object.title}}</p>
-<p><b>Post caption: </b>{{object.caption}} <br> <b>Posted At:</b>{{object.date}} </p>
-{% if object.author == user %}
-<a  class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
 
-{% endif%}
+<div class="container" >
+<img class="detimg" src="{{post.image.url}}" alt="" >
+
+<div class="d-flex justify-content-between align-items-center">
+    <span>Link To Site: <a href="{{ post.livelink }}"><i class="fa-solid fa-eye"></i></a></span>
+    <span>
+        <p> By: {{post.author}}</p>
+    </span>
+  </div>
+<div class="row mx-auto" id="details" >
+    <div class="col-md-4">
+        
+          <h2 class="">Rate Project</h2>
+          <p class="text">1 <- <span class="text-danger">Low</span> 5 -- <span class='text-warning'>Mid</span> 10 ->
+            <span class='text-success'>High</span></p>
+          <form class="" method="post" action="">
+           
+            {% csrf_token %}
+            <b>Design:</b> 
+              {{ form.design }}
+              <b>Usability:</b> 
+             {{ form.usability }}
+             <b>Content:</b>
+            {{ form.content }}
+          <br><br>
+         <strong>Review</strong>
+          <div class="form-floating" style="height: 100px; width: 200px; margin-left: 5px;">
+              {{ form.review }}
+              <button class="btn btn-success btn-sm mt-2" type="submit">Submit</button>
+          </div>
+
+          </form>
+          </div>
+          <div class="col-md-6">
+            <div style="overflow-x:auto;">
+              <table>
+                <tr>
+                  <th>Overall </th>
+                  <th>Design</th>
+                  <th>Usability</th>
+                  <th>Content</th>
+                </tr>
+                <tr>
+                  <td>{{ rate.avarage }}</td>
+                  <td>{{ rate.design }}</td>
+                  <td>{{ rate.usability }}</td>
+                  <td>{{ rate.content }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+      
 </div>
-{% endblock%}
+</div>
+
+{% endblock %}

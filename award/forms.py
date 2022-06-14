@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Post, Profile
+from .models import Post, Profile,Rate
 from django.forms.widgets import TextInput
 
 class UserRegisterForm(UserCreationForm):
@@ -36,3 +36,15 @@ class PostForm(forms.ModelForm):
             'placeholder': 'Project live link...',
         })
     }
+        
+class RateForm(forms.ModelForm):
+  class Meta:
+    model = Rate
+    fields = ('design', 'usability', 'content', 'review',)
+    widgets = {
+      'review': TextInput(attrs={
+        'class': 'form-control',
+        'style': 'max-width:300px',
+        'placeholder': 'Reviews...'
+      })
+    }        

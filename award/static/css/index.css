@@ -5,7 +5,24 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-  }
+}
+.rate{
+  display: flex;
+}
+#details{
+  background-color: rgb(173, 220, 227);
+}
+.detimg{
+  margin-top: 10px;
+  width: 100%;
+  height: 600px;
+
+}
+#prog{
+    margin-top: 40px;
+    border: 5px;
+    box-shadow: 4px 4px 4px 4px rgb(245, 149, 24);
+}
 #hero{
  
    background: linear-gradient(transparent, rgba(8, 8, 8, 0.446) 95%), url('../images/hero.jpeg');
@@ -45,7 +62,10 @@
   display: flex;
   justify-content: space-between;
 } 
-/* srarch */
+.person{
+  border: 0px;
+  box-shadow: 4px 0px 0px rgb(245, 149, 24);
+}
 .img{
   padding: 10px;
   border-radius: 5px;

@@ -31,12 +31,21 @@ class Post(models.Model):
     def save_post(self):
         self.save()
         
+    @classmethod
+    def user_post(cls, username):
+        posts = cls.objects.filter(author__username=username)
+        return posts
+        
+        
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+    
+    class Meta:
+      ordering = ['-id']
         
         
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='images', default='default.png')
     bio = models.TextField(max_length=500, default="Coffee and Code")
     location = models.CharField(max_length=60, blank=True)
@@ -47,12 +56,12 @@ class Profile(models.Model):
     
     def save(self, **kwargs):
         super().save( **kwargs)
-        img = Image.open(self.image.path)
+        img= Image.open(self. profile_picture.path)
 
         if img.height > 250 or img.width > 250:
             output_size = (250, 2500)
             img.thumbnail(output_size)
-            img.save(self.image.path)
+            img.save(self. profile_picture.path)
     
 class Rate(models.Model):
     rating = (
@@ -67,14 +76,11 @@ class Rate(models.Model):
         (9, '9'),
         (10, '10'),
     )
-    design = models.IntegerField(choices=rating, default=0, blank=True)
-    usability = models.IntegerField(choices=rating, blank=True)
-    content = models.IntegerField(choices=rating, blank=True)
-    score = models.FloatField(default=0, blank=True)
-    design_average = models.FloatField(default=0, blank=True)
-    usability_average = models.FloatField(default=0, blank=True)
-    content_average = models.FloatField(default=0, blank=True)
+    design = models.IntegerField(choices=rating, default=0)
+    usability = models.IntegerField(choices=rating, default=0)
+    content = models.IntegerField(choices=rating, default=0)
     review = models.CharField(max_length=300, blank=True, null=True)
+    average = models.FloatField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='ratings', null=True)
 
